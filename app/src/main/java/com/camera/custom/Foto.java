@@ -14,11 +14,14 @@ public class Foto {
 
     private int pesquisa;
 
-    @Generated(hash = 1282187533)
-    public Foto(Long id, String caminho, int pesquisa) {
+    private boolean escolhido;
+
+    @Generated(hash = 2039309222)
+    public Foto(Long id, String caminho, int pesquisa, boolean escolhido) {
         this.id = id;
         this.caminho = caminho;
         this.pesquisa = pesquisa;
+        this.escolhido = escolhido;
     }
 
     @Generated(hash = 483995547)
@@ -47,6 +50,14 @@ public class Foto {
 
     public void setPesquisa(int pesquisa) {
         this.pesquisa = pesquisa;
+    }
+
+    public boolean getEscolhido() {
+        return this.escolhido;
+    }
+
+    public void setEscolhido(boolean escolhido) {
+        this.escolhido = escolhido;
     }
 
 }

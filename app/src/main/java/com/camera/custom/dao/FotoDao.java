@@ -27,6 +27,7 @@ public class FotoDao extends AbstractDao<Foto, Long> {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property Caminho = new Property(1, String.class, "caminho", false, "CAMINHO");
         public final static Property Pesquisa = new Property(2, int.class, "pesquisa", false, "PESQUISA");
+        public final static Property Escolhido = new Property(3, boolean.class, "escolhido", false, "ESCOLHIDO");
     }
 
 
@@ -44,7 +45,8 @@ public class FotoDao extends AbstractDao<Foto, Long> {
         db.execSQL("CREATE TABLE " + constraint + "\"FOTO\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY ," + // 0: id
                 "\"CAMINHO\" TEXT," + // 1: caminho
-                "\"PESQUISA\" INTEGER NOT NULL );"); // 2: pesquisa
+                "\"PESQUISA\" INTEGER NOT NULL ," + // 2: pesquisa
+                "\"ESCOLHIDO\" INTEGER NOT NULL );"); // 3: escolhido
     }
 
     /** Drops the underlying database table. */
@@ -67,6 +69,7 @@ public class FotoDao extends AbstractDao<Foto, Long> {
             stmt.bindString(2, caminho);
         }
         stmt.bindLong(3, entity.getPesquisa());
+        stmt.bindLong(4, entity.getEscolhido() ? 1L: 0L);
     }
 
     @Override
@@ -83,6 +86,7 @@ public class FotoDao extends AbstractDao<Foto, Long> {
             stmt.bindString(2, caminho);
         }
         stmt.bindLong(3, entity.getPesquisa());
+        stmt.bindLong(4, entity.getEscolhido() ? 1L: 0L);
     }
 
     @Override
@@ -95,7 +99,8 @@ public class FotoDao extends AbstractDao<Foto, Long> {
         Foto entity = new Foto( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // caminho
-            cursor.getInt(offset + 2) // pesquisa
+            cursor.getInt(offset + 2), // pesquisa
+            cursor.getShort(offset + 3) != 0 // escolhido
         );
         return entity;
     }
@@ -105,6 +110,7 @@ public class FotoDao extends AbstractDao<Foto, Long> {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setCaminho(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setPesquisa(cursor.getInt(offset + 2));
+        entity.setEscolhido(cursor.getShort(offset + 3) != 0);
      }
     
     @Override

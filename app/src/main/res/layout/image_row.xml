@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <ImageView
+        android:id="@+id/imagem"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:scaleType="fitXY"/>
+
+    <at.markushi.ui.CircleButton
+        android:id="@+id/check"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="15dp"
+        android:layout_alignStart="@id/imagem"
+        android:src="@drawable/ic_check_black_24dp"
+        android:fitsSystemWindows="true"
+        app:cb_color="@color/branco"
+        android:clickable="false"
+        android:visibility="gone"
+        />
+
+    <at.markushi.ui.CircleButton
+        android:id="@+id/uncheck"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="15dp"
+        android:layout_alignStart="@id/imagem"
+        android:fitsSystemWindows="true"
+        android:clickable="false"
+        app:cb_color="@color/transparent"
+        />
+
+</RelativeLayout>
