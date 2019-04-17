@@ -17,7 +17,8 @@
         app:camera_facing="back"
         app:camera_flash="auto"
         app:camera_focus="continuous"
-        app:camera_permissions="camera" />
+        app:camera_permissions="camera"
+        android:keepScreenOn="true"/>
 
     <at.markushi.ui.CircleButton
         android:id="@+id/photoButton"
